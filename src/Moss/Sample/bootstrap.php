@@ -80,25 +80,25 @@ return array(
     'router' => array(
         'main' => array(
             'pattern' => '/',
-            'controller' => array('Moss\Sample\Controller\SampleController', 'indexAction'),
+            'controller' => 'Moss\Sample\Controller\SampleController@indexAction',
         ),
         'login' => array(
             'pattern' => '/login/',
-            'controller' => array('Moss\Sample\Controller\SampleController', 'loginAction'),
+            'controller' => 'Moss\Sample\Controller\SampleController@loginAction',
             'methods' => 'GET'
         ),
         'auth' => array(
             'pattern' => '/login/',
-            'controller' => array('Moss\Sample\Controller\SampleController', 'authAction'),
+            'controller' => 'Moss\Sample\Controller\SampleController@authAction',
             'methods' => 'POST'
         ),
         'logout' => array(
             'pattern' => '/logout/',
-            'controller' => array('Moss\Sample\Controller\SampleController', 'logoutAction'),
+            'controller' => 'Moss\Sample\Controller\SampleController@logoutAction',
         ),
         'source' => array(
             'pattern' => '/source/',
-            'controller' => array('Moss\Sample\Controller\SampleController', 'sourceAction'),
+            'controller' => 'Moss\Sample\Controller\SampleController@sourceAction',
         )
     )
 );
