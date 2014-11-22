@@ -5,6 +5,7 @@
     <style>
         body, code { font: medium/1.4em monospace; }
         code { display: block; background: #eee; }
+        small { color: #696; font-size: small; }
         .error { color: red; }
     </style>
 </head>
@@ -16,6 +17,8 @@
 <p>As you can see, there is no actual authorisation. Login/password are tokenized in <var>security</var> component. The rest happens inside that component and in bootstrap</p>
 <p>And this is bundles bootstrap file</p>
 <code><?= $bootstrap ?></code>
+
+<p><small>This view is rendered from <strong>PHP template</strong></small></p>
 
 </body>
 </html>

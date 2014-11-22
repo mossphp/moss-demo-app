@@ -8,7 +8,7 @@ return array(
             'compile' => __DIR__ . '/../compile/',
             'public' => __DIR__ . '/../web/',
         ),
-        'view' => array(
+        'phpView' => array(
             'component' => function (\Moss\Container\ContainerInterface $container) {
                     $view = new \Moss\View\View();
                     $view
@@ -22,6 +22,33 @@ return array(
 
                     return $view;
                 }
+        ),
+        'twigView' => array(
+            'component' => function (\Moss\Container\Container $container) {
+                $options = array(
+                    'debug' => true,
+                    'auto_reload' => true,
+                    'strict_variables' => false,
+                    'cache' => '../compile/'
+                );
+
+                $twig = new Twig_Environment(new Moss\Bridge\Loader\File(), $options);
+                $twig->setExtensions(
+                    array(
+                        new Moss\Bridge\Extension\Resource(),
+                        new Moss\Bridge\Extension\Url($container->get('router')),
+                        new Moss\Bridge\Extension\Trans(),
+                        new Twig_Extensions_Extension_Text(),
+                    )
+                );
+
+                $view = new \Moss\Bridge\View\View($twig);
+                $view
+                    ->set('request', $container->get('request'))
+                    ->set('config', $container->get('config'));
+
+                return $view;
+            }
         ),
         'flash' => array(
             'component' => function (\Moss\Container\ContainerInterface $container) {

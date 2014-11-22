@@ -1,7 +1,11 @@
-Feature: Sample app
+Feature: Sample app with Twig templates
   In order to show off
   As a user
   I need to be able to demonstrate capabilities
+
+  Background:
+    Given I am on "/?view=twig"
+    Then I should see "This view is rendered from Twig template"
 
   Scenario:
     Given I am on "/"

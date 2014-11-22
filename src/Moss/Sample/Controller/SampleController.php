@@ -3,8 +3,10 @@ namespace Moss\Sample\Controller;
 
 use Moss\Http\Response\Response;
 use Moss\Http\Response\ResponseRedirect;
+use Moss\Http\Session\SessionInterface;
 use Moss\Kernel\App;
 use Moss\Security\AuthenticationException;
+use Moss\View\ViewInterface;
 
 /**
  * Class SampleController
@@ -13,17 +15,42 @@ use Moss\Security\AuthenticationException;
  */
 class SampleController
 {
+    const VIEW_PHP = 'php';
+    const VIEW_TWIG = 'twig';
+
+    /**
+     * @var App
+     */
     protected $app;
+
+    /**
+     * @var SessionInterface
+     */
+    protected $session;
+
+    /**
+     * @var ViewInterface
+     */
+    protected $view;
 
 
     /**
      * Constructor
      *
-     * @param App $moss
+     * @param App $app
      */
-    public function __construct(App $moss)
+    public function __construct(App $app)
     {
-        $this->app = & $moss;
+        $this->app = &$app;
+
+        $this->session = $this->app->get('session');
+
+        if($this->app->request->query()->has('view')) {
+            $view = $this->app->request->query()->get('view');
+            $this->session->set('view', $view == self::VIEW_TWIG ? self::VIEW_TWIG : self::VIEW_PHP);
+        }
+
+        $this->view = $this->session->get('view') == self::VIEW_TWIG ? $app->get('twigView') : $app->get('phpView');
     }
 
     /**
@@ -33,7 +60,7 @@ class SampleController
      */
     public function indexAction()
     {
-        $content = $this->app->get('view')
+        $content = $this->view
             ->template('Moss:Sample:index')
             ->set('method', __METHOD__)
             ->render();
@@ -78,7 +105,7 @@ class SampleController
      */
     protected function form()
     {
-        return $this->app->get('view')
+        return $this->view
             ->template('Moss:Sample:login')
             ->set('method', __METHOD__)
             ->set('flash', $this->app->get('flash'))
@@ -97,7 +124,7 @@ class SampleController
 
         $response = new ResponseRedirect($this->app->router->make('main'), 5);
         $response->status(403);
-        $response->content('Logged out, you will be redirected... (back to login form)');
+        $response->content('Logged out, you will be redirected... (back to index)');
 
         return $response;
     }
@@ -109,7 +136,7 @@ class SampleController
      */
     public function sourceAction()
     {
-        $content = $this->app->get('view')
+        $content = $this->view
             ->template('Moss:Sample:source')
             ->set('method', __METHOD__)
             ->set('controller', highlight_file(__FILE__, true))

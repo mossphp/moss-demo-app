@@ -5,6 +5,7 @@
     <style>
         body, code { font: medium/1.4em monospace; }
         code { display: block; background: #eee; }
+        small { color: #696; font-size: small; }
         .error { color: red; }
     </style>
 </head>
@@ -22,6 +23,8 @@
     <input type="text" name="password" placeholder="password"/>
     <button type="submit">Submit</button>
 </form>
+
+<p><small>This view is rendered from <strong>PHP template</strong></small></p>
 
 </body>
 </html>
