@@ -22,7 +22,7 @@
 	"require": {
 		"php": ">=5.3.4",
 		"moss/moss": ">=1.0.1",
-		"moss/bridge": ">=1"
+		"moss/twig-bridge": ">=1"
 	},
 	"require-dev": {
 		"behat/behat": "2.4.*@stable",
