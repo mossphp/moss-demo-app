@@ -1,8 +1,8 @@
 {
 	"name": "moss/demo-app",
 	"version": "v0.8.6",
-	"description": "The PHP micro-framework",
-	"keywords": ["microframework"],
+	"description": "Moss demo app",
+	"keywords": ["framework", "demo"],
 	"type": "framework",
 	"license": "MIT",
 	"authors": [
