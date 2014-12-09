@@ -1,6 +1,6 @@
 {
 	"name": "moss/demo-app",
-	"version": "v0.8.6",
+	"version": "v0.8.7",
 	"description": "Moss demo app",
 	"keywords": ["moss", "framework", "demo"],
 	"type": "framework",
