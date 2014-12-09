@@ -2,7 +2,7 @@
 	"name": "moss/demo-app",
 	"version": "v0.8.6",
 	"description": "Moss demo app",
-	"keywords": ["framework", "demo"],
+	"keywords": ["moss", "framework", "demo"],
 	"type": "framework",
 	"license": "MIT",
 	"authors": [
@@ -13,15 +13,9 @@
 	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/potfur/moss"
-		}
-	],
 	"require": {
 		"php": ">=5.3.4",
-		"moss/framework": ">=1.0",
+		"moss/framework": ">=1.1",
 		"moss/twig-bridge": ">=1"
 	},
 	"require-dev": {

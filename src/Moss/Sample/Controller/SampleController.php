@@ -41,12 +41,12 @@ class SampleController
      */
     public function __construct(App $app)
     {
-        $this->app = &$app;
+        $this->app = $app;
 
         $this->session = $this->app->get('session');
 
-        if($this->app->request->query()->has('view')) {
-            $view = $this->app->request->query()->get('view');
+        if($this->app->request()->query()->has('view')) {
+            $view = $this->app->request()->query()->get('view');
             $this->session->set('view', $view == self::VIEW_TWIG ? self::VIEW_TWIG : self::VIEW_PHP);
         }
 
@@ -87,9 +87,9 @@ class SampleController
     {
         try {
             $this->app->get('security')
-                ->tokenize($this->app->request->body->all());
+                ->tokenize($this->app->request()->body()->all());
 
-            return new ResponseRedirect($this->app->router->make('source'));
+            return new ResponseRedirect($this->app->router()->make('source'));
         } catch (AuthenticationException $e) {
             $this->app->get('flash')
                 ->add($e->getMessage(), 'error');
@@ -122,7 +122,7 @@ class SampleController
         $this->app->get('security')
             ->destroy();
 
-        $response = new ResponseRedirect($this->app->router->make('main'), 5);
+        $response = new ResponseRedirect($this->app->router()->make('main'), 5);
         $response->status(403);
         $response->content('Logged out, you will be redirected... (back to index)');
 

@@ -112,12 +112,12 @@ return array(
         'login' => array(
             'pattern' => '/login/',
             'controller' => 'Moss\Sample\Controller\SampleController@loginAction',
-            'methods' => 'GET'
+            'methods' => ['GET']
         ),
         'auth' => array(
             'pattern' => '/login/',
             'controller' => 'Moss\Sample\Controller\SampleController@authAction',
-            'methods' => 'POST'
+            'methods' => ['POST']
         ),
         'logout' => array(
             'pattern' => '/logout/',
