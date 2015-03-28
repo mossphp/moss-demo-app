@@ -1,6 +1,6 @@
 {
 	"name": "moss/demo-app",
-	"version": "v0.8.7",
+	"version": "v0.8.8",
 	"description": "Moss demo app",
 	"keywords": ["moss", "framework", "demo"],
 	"type": "framework",
@@ -15,8 +15,8 @@
 	"prefer-stable": true,
 	"require": {
 		"php": ">=5.3.4",
-		"moss/framework": ">=1.1",
-		"moss/twig-bridge": ">=1"
+		"moss/framework": ">=1.2",
+		"moss/twig-bridge": ">=1.2"
 	},
 	"require-dev": {
 		"behat/behat": "2.4.*@stable",
