@@ -14,11 +14,14 @@ class FeatureContext extends MinkContext
     {
         $this->visit('/login');
 
-        $table = new \Behat\Gherkin\Node\TableNode();
-        $table->addRow(array('login', $login));
-        $table->addRow(array('password', $password));
+        $table = new \Behat\Gherkin\Node\TableNode(
+            array(
+                array('login', $login),
+                array('password', $password)
+            )
+        );
         $this->fillFields($table);
 
         $this->pressButton('Submit');
     }
-} 
+}

@@ -1,7 +1,10 @@
 default:
-    paths:
-        features: features
     extensions:
-        Behat\MinkExtension\Extension:
-            base_url: 'http://fill/me/'
+        Behat\MinkExtension:
+            base_url: 'http://vox.mysite.com/'
             goutte: ~
+
+travis:
+    extensions:
+        Behat\MinkExtension:
+            base_url: 'http://localhost:8080/web'
