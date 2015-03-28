@@ -3,12 +3,11 @@ php:
   - 5.6
   - 5.5
   - 5.4
-  - hhvm
 
 before_script:
   - composer self-update
   - composer install --prefer-dist
-  - php -S localhost:8080 ./web/
+  - php -S localhost:8080 ./web/ &
   - sleep 3
 
 script:
