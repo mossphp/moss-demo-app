@@ -7,4 +7,4 @@ default:
 travis:
     extensions:
         Behat\MinkExtension:
-            base_url: 'http://localhost:8080/web'
+            base_url: 'http://localhost:8080/web/'
