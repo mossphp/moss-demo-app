@@ -2,15 +2,15 @@
 return array(
     'container' => array(
         'path' => array(
-            'app' => __DIR__ . '/../src/',
-            'base' => __DIR__ . '/../',
-            'cache' => __DIR__ . '/../cache/',
-            'compile' => __DIR__ . '/../compile/',
-            'public' => __DIR__ . '/../web/',
+            'src' => realpath(WEB_DIR . '/../src/'),
+            'base' => realpath(WEB_DIR . '/../'),
+            'var' => realpath(WEB_DIR . '/../var/'),
+            'compile' => realpath(WEB_DIR . '/../compile/'),
+            'public' => WEB_DIR,
         ),
         'phpView' => array(
             'component' => function (\Moss\Container\ContainerInterface $container) {
-                    $view = new \Moss\View\View();
+                    $view = new \Moss\View\View($container->get('path.src') . '/{bundle}/{directory}/View/{file}.php');
                     $view
                         ->set('request', $container->get('request'))
                         ->set('config', $container->get('config'));
@@ -29,10 +29,12 @@ return array(
                     'debug' => true,
                     'auto_reload' => true,
                     'strict_variables' => false,
-                    'cache' => '../compile/'
+                    'cache' => $container->get('path.compile')
                 );
 
-                $twig = new Twig_Environment(new Moss\Bridge\Loader\File(), $options);
+                $loader = new Moss\Bridge\Loader\File($container->get('path.src') . '/{bundle}/{directory}/View/{file}.twig');
+
+                $twig = new Twig_Environment($loader, $options);
                 $twig->setExtensions(
                     array(
                         new Moss\Bridge\Extension\Resource(),
