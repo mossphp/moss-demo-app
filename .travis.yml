@@ -7,7 +7,7 @@ php:
 before_script:
   - composer self-update
   - composer install --prefer-dist
-  - php -S localhost:8080 ./web/ &
+  - php -S localhost:8080 ./web/index.php &
   - sleep 3
 
 script:
