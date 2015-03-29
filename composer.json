@@ -20,7 +20,7 @@
   "require": {
     "php": ">=5.4",
     "moss/framework": ">=1.2",
-    "moss/twig-bridge": ">=1.2"
+    "moss/twig-bridge": ">=2.0"
   },
   "require-dev": {
     "behat/behat": ">=3.0.5",
