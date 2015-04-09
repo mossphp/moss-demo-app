@@ -12,7 +12,6 @@
 </head>
 <body>
 <h1>
-    <img src="./resource/image/moss_logo.png" alt="Moss"/>
     <?= $method ?>
     <small>&lt;-- this is namespaced controller class and its currently executed action</small>
 </h1>
@@ -25,7 +24,10 @@
 <p>This can be easily changed, just <a href="?view=twig">click here</a> and app will use
     <var>moss/bridge</var> with Twig templates.</p>
 
+<p>PHP view are very basic, there are no extensions. To have them - switch to <a href="?view=twig">Twig templates</a></p>
+
 <p><small>This view is rendered from <strong>PHP template</strong></small></p>
+
 
 </body>
 </html>

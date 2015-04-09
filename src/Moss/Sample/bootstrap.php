@@ -23,6 +23,19 @@ return array(
                     return $view;
                 }
         ),
+        'translator' => array(
+            'component' => function (\Moss\Container\Container $container) {
+                $dictionary = new \Moss\Locale\Translator\ArrayDictionary('en_US', ['sample.translation.text' => 'This text is translation for "sample.translation.text" placeholdar']);
+                return new \Moss\Locale\Translator\Translator('en_US', $dictionary);
+            },
+            'shared' => true,
+        ),
+        'formatter' => array(
+            'component' => function (\Moss\Container\Container $container) {
+                return new \Moss\Locale\Formatter\PlainFormatter('en_US');
+            },
+            'shared' => true,
+        ),
         'twigView' => array(
             'component' => function (\Moss\Container\Container $container) {
                 $options = array(
@@ -37,10 +50,10 @@ return array(
                 $twig = new Twig_Environment($loader, $options);
                 $twig->setExtensions(
                     array(
-                        new Moss\Bridge\Extension\Asset(),
+                        new Moss\Bridge\Extension\Asset('./resource/{asset}'), // configures asset resource directory
                         new Moss\Bridge\Extension\Url($container->get('router')),
-                        new Moss\Bridge\Extension\Trans(),
-                        new Twig_Extensions_Extension_Text(),
+                        new Moss\Bridge\Extension\Trans($container->get('translator')),
+                        new Moss\Bridge\Extension\Format($container->get('formatter')),
                     )
                 );
 

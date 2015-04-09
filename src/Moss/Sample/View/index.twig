@@ -4,28 +4,49 @@
     <title>Moss / {{ method }}</title>
     <style>
         body, code { font: medium/1.4em monospace; }
+
         code { display: block; background: #eee; }
+
         small { color: #696; font-size: small; }
-        img { height: 2em; }
+
         .error { color: red; }
     </style>
 </head>
 <body>
 <h1>
-    <img src="{{ asset('/resource/image/moss_logo.png') }}" alt="Moss"/>
     {{ method }}
     <small>&lt;-- this is namespaced controller class and its currently executed action</small>
 </h1>
 {% block body %}
     <p>Moss sample controller and <a href="{{ url('source') }}">it looks like this</a></p>
 
-    <p>This view is rendered from
-        <a href="http://twig.sensiolabs.org/">Twig</a> template. No changes were made in controller.</p>
+    <p>This view is rendered from <a href="http://twig.sensiolabs.org/">Twig</a> template. No changes were made in controller.</p>
 
     <p>To get back to plain php templates <a href="?view=php">click here</a></p>
 {% endblock %}
 
-<p><small>This view is rendered from <strong>Twig template</strong></small></p>
+
+<h2>Testing extensions:</h2>
+<ul>
+    <li>
+        <p>This url is called <em>selfUrl</em>, is made with &#123;&#123; url() &#125;&#125; and always point to current site - {{ url() }}</p>
+    </li>
+    <li>
+        <p>{% trans 'sample.translation.text' %}</p>
+    </li>
+    <li>
+        <p>Here is formatter test, first it formats number 1234.567 into {{ 1234.567|number }}, and currency 1234 into {{ 1234|currency }}<br/>
+        There are also date, time and dateTime formatters.</p>
+    </li>
+    <li>
+        <p>In contrast to PHP templates, Twig has extensions - above below is referenced as <em>asset</em>.<br/>
+        Referenced path is configured in bootstrap file.</p>
+        <img src="{{ asset('/image/moss_logo.png') }}" alt="Moss"/>
+    </li>
+</ul>
+<p>
+    <small>This view is rendered from <strong>Twig template</strong></small>
+</p>
 
 </body>
 </html>
