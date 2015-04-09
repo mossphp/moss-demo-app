@@ -37,7 +37,7 @@ return array(
                 $twig = new Twig_Environment($loader, $options);
                 $twig->setExtensions(
                     array(
-                        new Moss\Bridge\Extension\Resource(),
+                        new Moss\Bridge\Extension\Asset(),
                         new Moss\Bridge\Extension\Url($container->get('router')),
                         new Moss\Bridge\Extension\Trans(),
                         new Twig_Extensions_Extension_Text(),

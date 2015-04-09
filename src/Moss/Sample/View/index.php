@@ -6,11 +6,16 @@
         body, code { font: medium/1.4em monospace; }
         code { display: block; background: #eee; }
         small { color: #696; font-size: small; }
+        img { height: 2em; }
         .error { color: red; }
     </style>
 </head>
 <body>
-<h1><?= $method ?> <small>&lt;-- this is namespaced controller class and its currently executed action</small></h1>
+<h1>
+    <img src="./resource/image/moss_logo.png" alt="Moss"/>
+    <?= $method ?>
+    <small>&lt;-- this is namespaced controller class and its currently executed action</small>
+</h1>
 
 <p>Moss sample controller and <a href="<?= $url('source') ?>">it looks like this</a></p>
 
