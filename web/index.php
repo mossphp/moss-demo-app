@@ -1,9 +1,9 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
-
 const WEB_DIR = __DIR__;
 
-$config = new \Moss\Config\Config(require __DIR__ . '/../src/Moss/Sample/bootstrap.php');
+require WEB_DIR . '/../vendor/autoload.php';
+
+$config = new \Moss\Config\Config(require WEB_DIR . '/../src/Moss/Sample/bootstrap.php');
 
 $moss = new \Moss\Kernel\App($config);
 $moss->run()->send();
